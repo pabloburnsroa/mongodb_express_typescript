@@ -17,7 +17,7 @@ const session_model_1 = __importDefault(require("../models/session.model"));
 function createSession(userId, userAgent) {
     return __awaiter(this, void 0, void 0, function* () {
         const session = yield session_model_1.default.create({ userId: userId, userAgent });
-        return session.toJSON();
+        return session.toObject();
     });
 }
 exports.createSession = createSession;

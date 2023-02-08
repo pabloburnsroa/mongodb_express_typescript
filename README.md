@@ -77,12 +77,30 @@ TODO
 The user schema will validate the user endpoints passed through the createUserHandler controller.
 
 # Session Management
+
 Managing user sessions
 
 ## Session Handler
+
 createUserSessionHandler
+
 - Validate a user's password
 - Create a session
 - Create access token
 - Create refresh token
 - return access / refresh token
+
+## JWT
+
+- Returning access token to client side once user verified
+- We will be using a RSA SHA256 algorithm for signing - private/public key...
+
+### What happens if access token is valid or expired?
+
+- if not valid, return unauthorized error
+- if valid, check if token is expired
+- if expired, is valid refresh token included in request?
+- if valid refresh token included, issue new access token and proceed to route handler
+
+
+# Testing 

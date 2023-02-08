@@ -43,7 +43,7 @@ function validatePassword({ email, password, }) {
         const isPasswordValid = yield user.checkPassword(password);
         if (!isPasswordValid)
             return false;
-        return (0, lodash_1.omit)(user.toJSON(), 'password');
+        return (0, lodash_1.omit)(user.toObject(), 'password');
     });
 }
 exports.validatePassword = validatePassword;

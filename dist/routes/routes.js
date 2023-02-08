@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user_controller_1 = require("../controllers/user.controller");
 const validateResource_1 = __importDefault(require("../middleware/validateResource"));
 const user_schema_1 = require("../schema/user.schema");
+const session_controller_1 = require("../controllers/session.controller");
+const session_schema_1 = require("../schema/session.schema");
 function routes(app) {
     app.get('/checkstatus', (req, res) => res.sendStatus(200));
     // CREATE USER
     app.post('/api/users', (0, validateResource_1.default)(user_schema_1.createUserSchema), user_controller_1.createUserHandler);
+    // CREATE SESSION
+    app.post('/api/sessions', (0, validateResource_1.default)(session_schema_1.createSessionSchema), session_controller_1.createUserSessionHandler);
 }
 exports.default = routes;

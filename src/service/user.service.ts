@@ -33,5 +33,5 @@ export async function validatePassword({
   // Check for valid password
   const isPasswordValid = await user.checkPassword(password);
   if (!isPasswordValid) return false;
-  return omit(user.toJSON(), 'password');
+  return omit(user.toObject(), 'password');
 }
