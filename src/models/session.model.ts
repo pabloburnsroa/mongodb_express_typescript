@@ -1,7 +1,7 @@
 import { Schema, Types } from 'mongoose';
 import mongoose from 'mongoose';
 
-interface ISession {
+export interface ISession {
   user: Types.ObjectId;
   valid: boolean;
   userAgent: string;

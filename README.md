@@ -102,5 +102,10 @@ createUserSessionHandler
 - if expired, is valid refresh token included in request?
 - if valid refresh token included, issue new access token and proceed to route handler
 
+# Product Route / Handler ...
 
-# Testing 
+TODO
+
+# Testing
+
+TODO

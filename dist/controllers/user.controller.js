@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createUserHandler = void 0;
+exports.getCurrentUser = exports.createUserHandler = void 0;
 const logger_1 = __importDefault(require("../utils/logger"));
 const user_service_1 = require("../service/user.service");
 // Handler to create a user
@@ -29,3 +29,9 @@ function createUserHandler(req, res) {
     });
 }
 exports.createUserHandler = createUserHandler;
+function getCurrentUser(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return res.send(res.locals.user);
+    });
+}
+exports.getCurrentUser = getCurrentUser;

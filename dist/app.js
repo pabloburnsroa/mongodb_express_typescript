@@ -39,10 +39,12 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 const connect_1 = __importDefault(require("./db/connect"));
 const logger_1 = __importDefault(require("./utils/logger"));
+const routes_1 = __importDefault(require("./routes/routes"));
 const server_1 = __importDefault(require("./utils/server"));
 const port = process.env.PORT;
 const app = (0, server_1.default)();
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     logger_1.default.info(`[server]: Server is running at http://localhost:${port}`);
     yield (0, connect_1.default)();
+    (0, routes_1.default)(app);
 }));

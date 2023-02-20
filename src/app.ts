@@ -13,4 +13,5 @@ const app = createServer();
 app.listen(port, async () => {
   log.info(`[server]: Server is running at http://localhost:${port}`);
   await connect();
+  routes(app);
 });

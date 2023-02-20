@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.validatePassword = exports.createUser = void 0;
+exports.findUser = exports.validatePassword = exports.createUser = void 0;
 const user_model_1 = __importDefault(require("../models/user.model"));
 const lodash_1 = require("lodash");
 /**
@@ -47,3 +47,9 @@ function validatePassword({ email, password, }) {
     });
 }
 exports.validatePassword = validatePassword;
+function findUser(query) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return user_model_1.default.findOne(query).lean();
+    });
+}
+exports.findUser = findUser;
