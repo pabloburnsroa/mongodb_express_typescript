@@ -62,6 +62,8 @@ Define a variable validate that takes in schema, which will return another funct
 
 ## User Controller
 
+- The controller layer is responsible for handling client requests, and responding to them. Won't contain business logic.
+
 Handler for creating a user
 
 ```
@@ -69,6 +71,8 @@ CODE GOES HERE
 ```
 
 ## User Service
+
+- The service layer container the app logic, separates logic from the details of handling and routing HTTP requests.
 
 TODO
 
@@ -102,10 +106,37 @@ createUserSessionHandler
 - if expired, is valid refresh token included in request?
 - if valid refresh token included, issue new access token and proceed to route handler
 
-# Product Route / Handler ...
+## Product Route / Handler ...
 
 TODO
 
-# Testing
+## Testing
 
 TODO
+
+## Google Login
+
+TODO
+
+## Measure API Performance
+
+- Run a metrics server - utils/metrics.ts
+- `npm install prom-client response-time`
+
+```
+export function metricsServer() {
+  app.listen(9100, () => {
+    log.info(`Metrics server...`)
+  })
+}
+```
+
+- Retrieve default metrics
+
+```
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics();
+```
+
+- send a get request to endpoint http://localhost:9100/metrics
+- create middleware to measure respone time 

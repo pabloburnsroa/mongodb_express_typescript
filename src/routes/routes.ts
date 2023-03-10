@@ -9,10 +9,13 @@ import {
   createUserSessionHandler,
   deleteSessionHandler,
   getUserSessionsHandler,
+  googleOauthHandler,
 } from '../controllers/session.controller';
 import { createSessionSchema } from '../schema/session.schema';
 import requireUser from '../middleware/requireUser';
+
 function routes(app: Express) {
+  // CHECK STATUS
   app.get('/checkstatus', (req: Request, res: Response) => res.sendStatus(200));
 
   // CREATE USER
@@ -25,10 +28,19 @@ function routes(app: Express) {
     createUserSessionHandler
   );
 
+  // GET SESSIONS
   app.get('/api/sessions', requireUser, getUserSessionsHandler);
+
+  // DELETE SESSION
   app.delete('/api/sessions', requireUser, deleteSessionHandler);
 
+  // GET USER
   app.get('/api/me', requireUser, getCurrentUser);
+
+  // GOOGLE AUTH
+  app.get('/api/sessions/oauth/google', googleOauthHandler);
+
+  
 }
 
 export default routes;

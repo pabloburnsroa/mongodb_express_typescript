@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 const privateKey = <string>process.env.PRIVATE_KEY;
 const publicKey = <string>process.env.PUBLIC_KEY;
 
-export function signJWT(object: Object, options?: jwt.SignOptions | undefined) {
+export function signJWT(object: string | object | Buffer, options?: jwt.SignOptions | undefined) {
   // console.log(privateKey);
   return jwt.sign(object, privateKey, {
     ...(options && options),

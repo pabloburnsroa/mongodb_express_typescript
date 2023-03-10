@@ -41,10 +41,23 @@ const connect_1 = __importDefault(require("./db/connect"));
 const logger_1 = __importDefault(require("./utils/logger"));
 const routes_1 = __importDefault(require("./routes/routes"));
 const server_1 = __importDefault(require("./utils/server"));
+const metrics_1 = __importStar(require("./utils/metrics"));
+const response_time_1 = __importDefault(require("response-time"));
 const port = process.env.PORT;
 const app = (0, server_1.default)();
+app.use((0, response_time_1.default)((req, res, time) => {
+    var _a;
+    if ((_a = req === null || req === void 0 ? void 0 : req.route) === null || _a === void 0 ? void 0 : _a.path) {
+        metrics_1.restResponseTimeHistogram.observe({
+            method: req.method,
+            route: req.route.path,
+            status_code: res.statusCode,
+        }, time * 1000);
+    }
+}));
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     logger_1.default.info(`[server]: Server is running at http://localhost:${port}`);
     yield (0, connect_1.default)();
     (0, routes_1.default)(app);
+    (0, metrics_1.default)();
 }));

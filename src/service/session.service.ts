@@ -1,10 +1,13 @@
-import { FilterQuery, UpdateQuery } from 'mongoose';
+import mongoose, { FilterQuery, UpdateQuery, Types } from 'mongoose';
 import SessionModel, { ISession } from '../models/session.model';
 import { signJWT, verifyJWT } from '../utils/jwt.utils';
 import { get } from 'lodash';
 import { findUser } from './user.service';
 
-export async function createSession(userId: string, userAgent?: string) {
+export async function createSession(
+  userId: mongoose.Types.ObjectId,
+  userAgent?: string
+) {
   const session = await SessionModel.create({ user: userId, userAgent });
 
   return session.toObject();
