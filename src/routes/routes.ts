@@ -49,7 +49,10 @@ function routes(app: Express) {
    *          application/json:
    *            schema:
    *              $ref: '#/components/schemas/CreateUserResponse'
-   *
+   *      409:
+   *        description: Conflict
+   *      400:
+   *        description: Bad request
    *
    */
   app.post('/api/users', validate(createUserSchema), createUserHandler);

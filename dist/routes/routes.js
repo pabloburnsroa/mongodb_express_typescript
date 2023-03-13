@@ -43,7 +43,10 @@ function routes(app) {
      *          application/json:
      *            schema:
      *              $ref: '#/components/schemas/CreateUserResponse'
-     *
+     *      409:
+     *        description: Conflict
+     *      400:
+     *        description: Bad request
      *
      */
     app.post('/api/users', (0, validateResource_1.default)(user_schema_1.createUserSchema), user_controller_1.createUserHandler);
