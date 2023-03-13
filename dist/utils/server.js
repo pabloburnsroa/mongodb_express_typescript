@@ -9,12 +9,10 @@ const morgan_1 = __importDefault(require("morgan"));
 const deserializeUser_1 = require("../middleware/deserializeUser");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const allowedOrigins = process.env.ORIGIN;
-console.log(allowedOrigins);
 const options = {
     origin: allowedOrigins,
     credentials: true,
 };
-console.log(options);
 function createServer() {
     const app = (0, express_1.default)();
     app.use((0, cors_1.default)(options));

@@ -15,10 +15,43 @@ import { createSessionSchema } from '../schema/session.schema';
 import requireUser from '../middleware/requireUser';
 
 function routes(app: Express) {
-  // CHECK STATUS
+  /**
+   * @openapi
+   * /checkstatus:
+   *  get:
+   *    tags:
+   *    - Checkstatus
+   *    description: Responds if the app is up and runnning
+   *    responses:
+   *      200:
+   *        description: App is running
+   */
   app.get('/checkstatus', (req: Request, res: Response) => res.sendStatus(200));
 
-  // CREATE USER
+  /**
+   * @openapi
+   * '/api/users':
+   *  post:
+   *    tags:
+   *    - User
+   *    summary: Register a new user
+   *    description: Responds if new user is registered
+   *    requestBody:
+   *      required: true
+   *      content:
+   *        application/json:
+   *          schema:
+   *            $ref: '#/components/schemas/CreateUserInput'
+   *    responses:
+   *      200:
+   *        description: Success
+   *        content:
+   *          application/json:
+   *            schema:
+   *              $ref: '#/components/schemas/CreateUserResponse'
+   *
+   *
+   */
   app.post('/api/users', validate(createUserSchema), createUserHandler);
 
   // CREATE SESSION
@@ -39,8 +72,6 @@ function routes(app: Express) {
 
   // GOOGLE AUTH
   app.get('/api/sessions/oauth/google', googleOauthHandler);
-
-  
 }
 
 export default routes;

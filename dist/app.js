@@ -43,6 +43,7 @@ const routes_1 = __importDefault(require("./routes/routes"));
 const server_1 = __importDefault(require("./utils/server"));
 const metrics_1 = __importStar(require("./utils/metrics"));
 const response_time_1 = __importDefault(require("response-time"));
+const swagger_1 = __importDefault(require("./utils/swagger"));
 const port = process.env.PORT;
 const app = (0, server_1.default)();
 app.use((0, response_time_1.default)((req, res, time) => {
@@ -60,4 +61,5 @@ app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, connect_1.default)();
     (0, routes_1.default)(app);
     (0, metrics_1.default)();
+    (0, swagger_1.default)(app, port);
 }));

@@ -6,12 +6,10 @@ import { deserializeUser } from '../middleware/deserializeUser';
 import cookieParser from 'cookie-parser';
 
 const allowedOrigins = process.env.ORIGIN;
-console.log(allowedOrigins);
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
   credentials: true,
 };
-console.log(options);
 
 function createServer() {
   const app = express();

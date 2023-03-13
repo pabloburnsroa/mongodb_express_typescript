@@ -10,7 +10,9 @@ import createServer from './utils/server';
 import metricsServer, { restResponseTimeHistogram } from './utils/metrics';
 import responseTime from 'response-time';
 
-const port = process.env.PORT;
+import swaggerDocs from './utils/swagger';
+
+const port = process.env.PORT as unknown as number;
 const app = createServer();
 
 app.use(
@@ -33,4 +35,6 @@ app.listen(port, async () => {
   await connect();
   routes(app);
   metricsServer();
+
+  swaggerDocs(app, port);
 });
