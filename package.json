@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc",
     "test": "jest",
     "start": "node build/app.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/app.js\""
