@@ -6,8 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "test": "jest",
-    "start": "node dist/app.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app.js\""
+    "start": "node build/app.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/app.js\""
   },
   "repository": {
     "type": "git",

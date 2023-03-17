@@ -1,0 +1,7 @@
+services:
+  api:
+    build:
+      context: ./
+    container_name: rest-api-node-docker
+    ports:
+      - '4000:4000'
